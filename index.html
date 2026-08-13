@@ -1,95 +1,533 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>¡Un Regalo para Ti!</title>
-    <style>
-        /* Pantalla completamente blanca y centrada */
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: #ffffff;
-            font-family: 'Arial', sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            overflow: hidden;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unrated Demon List</title>
+  <!-- Font Awesome para íconos -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg-color: #0b0c10;
+      --card-bg: #12141d;
+      --border-color: #1f2430;
+      --accent-purple: #8a2be2;
+      --accent-glow: #a855f7;
+      --text-main: #e2e8f0;
+      --text-muted: #94a3b8;
+    }
 
-        /* Contenedor principal */
-        .contenedor {
-            text-align: center;
-        }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Rajdhani', sans-serif;
+    }
 
-        /* Estilos del botón morado */
-        .btn-regalo {
-            background-color: #7B2CBF;
-            color: #ffffff;
-            font-size: 22px;
-            font-weight: bold;
-            padding: 15px 35px;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(123, 44, 191, 0.4);
-            transition: transform 0.2s, background-color 0.2s;
-        }
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
 
-        /* Efecto al pasar el mouse por encima */
-        .btn-regalo:hover {
-            background-color: #9D4EDD;
-            transform: scale(1.05);
-        }
+    /* NAV BAR */
+    header {
+      background: rgba(18, 20, 29, 0.95);
+      border-bottom: 2px solid var(--accent-purple);
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 0 15px rgba(138, 43, 226, 0.2);
+    }
 
-        /* Efecto al hundir el botón */
-        .btn-regalo:active {
-            transform: scale(0.95);
-        }
+    .logo {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
 
-        /* Estilos de la imagen sorpresa (oculta al inicio) */
-        .imagen-sorpresa {
-            display: none;
-            max-width: 90%;
-            max-height: 80vh;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-            animation: aparecer 0.8s ease forwards;
-        }
+    .logo span {
+      color: var(--accent-glow);
+      text-shadow: 0 0 10px var(--accent-glow);
+    }
 
-        /* Animación para que aparezca suavemente */
-        @keyframes aparecer {
-            from {
-                opacity: 0;
-                transform: scale(0.8);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-    </style>
+    nav {
+      display: flex;
+      gap: 20px;
+    }
+
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    nav a:hover, nav a.active {
+      color: var(--accent-glow);
+      text-shadow: 0 0 8px var(--accent-glow);
+    }
+
+    /* MAIN CONTAINER */
+    .container {
+      max-width: 1300px;
+      margin: 30px auto;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 25px;
+      width: 100%;
+    }
+
+    /* TOP #1 FEATURED SECTION */
+    .featured-card {
+      background: linear-gradient(135deg, #161925 0%, #0d0f17 100%);
+      border: 1px solid var(--accent-purple);
+      border-radius: 12px;
+      padding: 20px;
+      display: flex;
+      gap: 25px;
+      position: relative;
+      box-shadow: 0 0 20px rgba(138, 43, 226, 0.15);
+      margin-bottom: 30px;
+      overflow: hidden;
+    }
+
+    .featured-badge {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--accent-glow);
+      text-shadow: 0 0 15px var(--accent-glow);
+      z-index: 2;
+    }
+
+    .featured-img {
+      width: 50%;
+      border-radius: 8px;
+      object-fit: cover;
+      border: 1px solid var(--border-color);
+    }
+
+    .featured-info {
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .featured-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2.2rem;
+      color: #fff;
+      margin-bottom: 10px;
+      letter-spacing: 1px;
+    }
+
+    .tags {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .tag {
+      background: rgba(138, 43, 226, 0.2);
+      border: 1px solid var(--accent-purple);
+      color: var(--accent-glow);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .info-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      font-size: 1.1rem;
+    }
+
+    .info-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text-main);
+    }
+
+    .info-item i {
+      color: var(--accent-glow);
+      width: 20px;
+    }
+
+    /* MAIN TABLE */
+    .table-container {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 20px;
+    }
+
+    .section-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.3rem;
+      margin-bottom: 20px;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 10px;
+    }
+
+    .demon-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .demon-table th {
+      text-align: left;
+      padding: 12px;
+      color: var(--text-muted);
+      font-weight: 700;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .demon-table td {
+      padding: 14px 12px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+      vertical-align: middle;
+    }
+
+    .demon-table tr:hover {
+      background: rgba(138, 43, 226, 0.05);
+    }
+
+    .rank {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--accent-glow);
+    }
+
+    .level-cell {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .level-thumb {
+      width: 80px;
+      height: 45px;
+      border-radius: 6px;
+      object-fit: cover;
+    }
+
+    .level-name {
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: #fff;
+    }
+
+    .creator-info {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .flag {
+      width: 20px;
+      border-radius: 3px;
+    }
+
+    .play-btn {
+      color: var(--accent-glow);
+      font-size: 1.2rem;
+      transition: transform 0.2s ease;
+    }
+
+    .play-btn:hover {
+      transform: scale(1.2);
+    }
+
+    /* SIDEBAR */
+    .sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .sidebar-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 20px;
+    }
+
+    .discord-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: #5865F2;
+      color: #fff;
+      text-decoration: none;
+      padding: 12px;
+      border-radius: 8px;
+      font-weight: 700;
+      margin-top: 15px;
+      transition: background 0.3s ease;
+    }
+
+    .discord-btn:hover {
+      background: #4752C4;
+    }
+
+    .steps-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    .step-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.95rem;
+    }
+
+    .step-num {
+      background: var(--accent-purple);
+      color: #fff;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.85rem;
+      flex-shrink: 0;
+    }
+
+    /* FOOTER */
+    footer {
+      margin-top: auto;
+      background: var(--card-bg);
+      border-top: 1px solid var(--border-color);
+      padding: 20px;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 900px) {
+      .container {
+        grid-template-columns: 1fr;
+      }
+      .featured-card {
+        flex-direction: column;
+      }
+      .featured-img, .featured-info {
+        width: 100%;
+      }
+    }
+  </style>
 </head>
 <body>
 
-    <div class="contenedor">
-        <button class="btn-regalo" id="botonRegalo">¡Presiona aquí para tu regalo!</button>
-
-        <img src="imgs/jajaxdbvromaaa.jpg" alt="Regalo Sorpresa" class="imagen-sorpresa" id="imagenRegalo">
+  <!-- NAVBAR -->
+  <header>
+    <div class="logo">
+      <i class="fa-solid fa-cube"></i> UNRATED <span>DEMON LIST</span>
     </div>
+    <nav>
+      <a href="#" class="active"><i class="fa-solid fa-house"></i> Home</a>
+      <a href="#"><i class="fa-solid fa-list-ol"></i> Lista Principal</a>
+      <a href="#"><i class="fa-solid fa-clock-rotate-left"></i> Legacy</a>
+      <a href="#"><i class="fa-solid fa-globe"></i> Países</a>
+    </nav>
+  </header>
 
-    <script>
-        // Función para cambiar el botón por la imagen al hacer clic
-        document.getElementById('botonRegalo').addEventListener('click', function() {
-            // Esconde el botón morado
-            this.style.display = 'none';
+  <!-- CONTENT CONTAINER -->
+  <div class="container">
+    
+    <!-- MAIN COLUMN -->
+    <main>
+      
+      <!-- TOP #1 FEATURED (MODIFICADO: Sin duración, canción ni botones) -->
+      <div class="featured-card">
+        <div class="featured-badge">#1</div>
+        <img class="featured-img" src="https://i.ytimg.com/vi/placeholder/maxresdefault.jpg" alt="Thumbnail Change" onerror="this.src='https://via.placeholder.com/600x350/12141d/8a2be2?text=CHANGE'">
+        <div class="featured-info">
+          <h1 class="featured-title">CHANGE</h1>
+          <div class="tags">
+            <span class="tag">Extreme Demon</span>
+            <span class="tag">Unrated</span>
+          </div>
+          <div class="info-list">
+            <div class="info-item">
+              <i class="fa-solid fa-user"></i>
+              <span><strong>Creador:</strong> ChangeGD <img src="https://flagcdn.com/w20/co.png" class="flag" alt="Colombia"></span>
+            </div>
+            <div class="info-item">
+              <i class="fa-solid fa-circle-check"></i>
+              <span><strong>Verificado por:</strong> Ligth <i class="fa-solid fa-shield-halved" style="color: var(--accent-glow);"></i></span>
+            </div>
+            <div class="info-item">
+              <i class="fa-solid fa-key"></i>
+              <span><strong>ID:</strong> 105229888</span>
+            </div>
+            <div class="info-item">
+              <i class="fa-solid fa-shapes"></i>
+              <span><strong>Objetos:</strong> 185,432</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MAIN TABLE -->
+      <div class="table-container">
+        <div class="section-title">
+          <i class="fa-solid fa-trophy" style="color: gold;"></i> LISTA PRINCIPAL
+        </div>
+        
+        <table class="demon-table">
+          <thead>
+            <tr>
+              <th>POS</th>
+              <th>NIVEL</th>
+              <th>CREADOR</th>
+              <th>VERIFICADO POR</th>
+              <th>DURACIÓN</th>
+              <th>OBJETOS</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="rank">1</td>
+              <td>
+                <div class="level-cell">
+                  <img class="level-thumb" src="https://via.placeholder.com/150/12141d/8a2be2?text=CHANGE" alt="thumb">
+                  <div>
+                    <div class="level-name">CHANGE</div>
+                    <span class="tag" style="font-size: 0.65rem;">Extreme Demon</span>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div class="creator-info">
+                  <img src="https://flagcdn.com/w20/co.png" class="flag" alt="CO"> ChangeGD
+                </div>
+              </td>
+              <td>Ligth <i class="fa-solid fa-check" style="color: var(--accent-glow);"></i></td>
+              <td>1:52</td>
+              <td>185,432</td>
+              <td><a href="#" class="play-btn"><i class="fa-solid fa-circle-play"></i></a></td>
+            </tr>
             
-            // Muestra la imagen sorpresa
-            const imagen = document.getElementById('imagenRegalo');
-            imagen.style.display = 'block';
-        });
-    </script>
+            <tr>
+              <td class="rank">2</td>
+              <td>
+                <div class="level-cell">
+                  <img class="level-thumb" src="https://via.placeholder.com/150/12141d/8a2be2?text=INFERNUM" alt="thumb">
+                  <div>
+                    <div class="level-name">INFERNUM</div>
+                    <span class="tag" style="font-size: 0.65rem;">Extreme Demon</span>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div class="creator-info">
+                  <img src="https://flagcdn.com/w20/us.png" class="flag" alt="US"> DarkNeon
+                </div>
+              </td>
+              <td>Zoink <i class="fa-solid fa-check" style="color: var(--accent-glow);"></i></td>
+              <td>2:18</td>
+              <td>210,987</td>
+              <td><a href="#" class="play-btn"><i class="fa-solid fa-circle-play"></i></a></td>
+            </tr>
+
+            <tr>
+              <td class="rank">3</td>
+              <td>
+                <div class="level-cell">
+                  <img class="level-thumb" src="https://via.placeholder.com/150/12141d/8a2be2?text=ETERNAL+NIGHT" alt="thumb">
+                  <div>
+                    <div class="level-name">ETERNAL NIGHT</div>
+                    <span class="tag" style="font-size: 0.65rem;">Extreme Demon</span>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div class="creator-info">
+                  <img src="https://flagcdn.com/w20/se.png" class="flag" alt="SE"> Nexender
+                </div>
+              </td>
+              <td>Aori <i class="fa-solid fa-check" style="color: var(--accent-glow);"></i></td>
+              <td>1:44</td>
+              <td>176,321</td>
+              <td><a href="#" class="play-btn"><i class="fa-solid fa-circle-play"></i></a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </main>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      
+      <div class="sidebar-card">
+        <div class="section-title"><i class="fa-brands fa-discord"></i> DISCORD SERVER</div>
+        <p style="font-size: 0.95rem; color: var(--text-muted);">Únete a nuestra comunidad y envía tus niveles para la lista.</p>
+        <a href="#" class="discord-btn"><i class="fa-brands fa-discord"></i> UNIRSE AL SERVIDOR</a>
+      </div>
+
+      <div class="sidebar-card">
+        <div class="section-title"><i class="fa-solid fa-paper-plane"></i> ¿CÓMO ENVIAR?</div>
+        <div class="steps-list">
+          <div class="step-item"><span class="step-num">1</span> Únete al servidor de Discord</div>
+          <div class="step-item"><span class="step-num">2</span> Ve al canal #submit-level</div>
+          <div class="step-item"><span class="step-num">3</span> Sigue el formato de envío</div>
+          <div class="step-item"><span class="step-num">4</span> Espera la revisión del staff</div>
+        </div>
+      </div>
+
+    </aside>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    &copy; 2026 Unrated Demon List. Todos los derechos reservados.
+  </footer>
 
 </body>
 </html>
