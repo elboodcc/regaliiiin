@@ -1,811 +1,226 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SVR PAPUS DEMON LIST</title>
-  <!-- Font Awesome para íconos -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
-  
-  <style>
-    :root {
-      --bg-color: #0b0c10;
-      --card-bg: #12141d;
-      --border-color: #1f2430;
-      --accent-purple: #8a2be2;
-      --accent-glow: #a855f7;
-      --text-main: #e2e8f0;
-      --text-muted: #94a3b8;
+<meta charset="UTF-8">
+<style>
+    @page {
+        size: A4 portrait;
+        margin: 15mm 12mm;
+        background-color: #0d1117;
     }
-
     * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: 'Rajdhani', sans-serif;
+        box-sizing: border-box;
     }
-
     body {
-      background-color: var(--bg-color);
-      color: var(--text-main);
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
+        margin: 0;
+        padding: 0;
+        font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        color: #c9d1d9;
+        background-color: #0d1117;
+        font-size: 10pt;
     }
-
-    /* NAV BAR */
-    header {
-      background: rgba(18, 20, 29, 0.95);
-      border-bottom: 2px solid var(--accent-purple);
-      padding: 15px 30px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      box-shadow: 0 0 15px rgba(138, 43, 226, 0.2);
+    h1 {
+        color: #58a6ff;
+        text-align: center;
+        font-size: 20pt;
+        margin-bottom: 5px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
     }
-
-    .logo {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 1.5rem;
-      font-weight: 800;
-      color: #fff;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
+    .subtitle {
+        text-align: center;
+        color: #8b949e;
+        font-size: 10pt;
+        margin-bottom: 20px;
     }
-
-    .logo span {
-      color: var(--accent-glow);
-      text-shadow: 0 0 10px var(--accent-glow);
-    }
-
-    nav {
-      display: flex;
-      gap: 20px;
-    }
-
-    nav a {
-      color: var(--text-muted);
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 1.1rem;
-      transition: all 0.3s ease;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    nav a:hover, nav a.active {
-      color: var(--accent-glow);
-      text-shadow: 0 0 8px var(--accent-glow);
-    }
-
-    /* MAIN CONTAINER */
-    .container {
-      max-width: 1300px;
-      margin: 30px auto;
-      padding: 0 20px;
-      display: grid;
-      grid-template-columns: 1fr 340px;
-      gap: 25px;
-      width: 100%;
-    }
-
-    /* TOP #1 FEATURED SECTION */
-    .featured-card {
-      background: linear-gradient(135deg, #161925 0%, #0d0f17 100%);
-      border: 1px solid var(--accent-purple);
-      border-radius: 12px;
-      padding: 20px;
-      display: flex;
-      gap: 25px;
-      position: relative;
-      box-shadow: 0 0 20px rgba(138, 43, 226, 0.15);
-      margin-bottom: 30px;
-      overflow: hidden;
-    }
-
-    .featured-badge {
-      position: absolute;
-      top: 15px;
-      left: 15px;
-      font-family: 'Orbitron', sans-serif;
-      font-size: 2.5rem;
-      font-weight: 800;
-      color: var(--accent-glow);
-      text-shadow: 0 0 15px var(--accent-glow);
-      z-index: 2;
-    }
-
-    .featured-img {
-      width: 50%;
-      border-radius: 8px;
-      object-fit: cover;
-      border: 1px solid var(--border-color);
-    }
-
-    .featured-info {
-      width: 50%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-
-    .featured-title {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 2.2rem;
-      color: #fff;
-      margin-bottom: 10px;
-      letter-spacing: 1px;
-    }
-
-    .tags {
-      display: flex;
-      gap: 10px;
-      margin-bottom: 20px;
-    }
-
-    .tag {
-      background: rgba(138, 43, 226, 0.2);
-      border: 1px solid var(--accent-purple);
-      color: var(--accent-glow);
-      padding: 4px 12px;
-      border-radius: 20px;
-      font-size: 0.85rem;
-      font-weight: 700;
-      text-transform: uppercase;
-    }
-
-    .info-list {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      font-size: 1.1rem;
-    }
-
-    .info-item {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      color: var(--text-main);
-    }
-
-    .info-item i {
-      color: var(--accent-glow);
-      width: 20px;
-    }
-
-    /* MAIN TABLE */
-    .table-container {
-      background: var(--card-bg);
-      border: 1px solid var(--border-color);
-      border-radius: 12px;
-      padding: 20px;
-    }
-
-    .section-title {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 1.3rem;
-      margin-bottom: 20px;
-      color: #fff;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      border-bottom: 1px solid var(--border-color);
-      padding-bottom: 10px;
-    }
-
-    .demon-table {
-      width: 100%;
-      border-collapse: collapse;
-    }
-
-    .demon-table th {
-      text-align: left;
-      padding: 12px;
-      color: var(--text-muted);
-      font-weight: 700;
-      font-size: 0.9rem;
-      text-transform: uppercase;
-      border-bottom: 1px solid var(--border-color);
-    }
-
-    .demon-table td {
-      padding: 14px 12px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.03);
-      vertical-align: middle;
-    }
-
-    .demon-table tr:hover {
-      background: rgba(138, 43, 226, 0.05);
-    }
-
-    .rank {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 1.2rem;
-      font-weight: 700;
-      color: var(--accent-glow);
-    }
-
-    .level-cell {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-    }
-
-    .level-thumb {
-      width: 80px;
-      height: 45px;
-      border-radius: 6px;
-      object-fit: cover;
-    }
-
-    .level-name {
-      font-weight: 700;
-      font-size: 1.1rem;
-      color: #fff;
-    }
-
-    .creator-info {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .flag {
-      width: 20px;
-      border-radius: 3px;
-    }
-
-    .play-btn {
-      color: var(--accent-glow);
-      font-size: 1.2rem;
-      transition: transform 0.2s ease;
-    }
-
-    .play-btn:hover {
-      transform: scale(1.2);
-    }
-
-    /* SIDEBAR */
-    .sidebar {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-
-    .sidebar-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border-color);
-      border-radius: 12px;
-      padding: 20px;
-    }
-
-    .discord-btn {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      background: #5865F2;
-      color: #fff;
-      text-decoration: none;
-      padding: 12px;
-      border-radius: 8px;
-      font-weight: 700;
-      margin-top: 15px;
-      transition: background 0.3s ease;
-    }
-
-    .discord-btn:hover {
-      background: #4752C4;
-    }
-
-    .steps-list {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      margin-top: 10px;
-    }
-
-    .step-item {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-size: 0.95rem;
-    }
-
-    .step-num {
-      background: var(--accent-purple);
-      color: #fff;
-      width: 24px;
-      height: 24px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
-      font-size: 0.85rem;
-      flex-shrink: 0;
-    }
-
-    /* FOOTER */
-    footer {
-      margin-top: auto;
-      background: var(--card-bg);
-      border-top: 1px solid var(--border-color);
-      padding: 20px;
-      text-align: center;
-      color: var(--text-muted);
-      font-size: 0.9rem;
-    }
-
-    @media (max-width: 900px) {
-      .container {
-        grid-template-columns: 1fr;
-      }
-      .featured-card {
-        flex-direction: column;
-      }
-      .featured-img, .featured-info {
+    table {
         width: 100%;
-      }
+        border-collapse: collapse;
+        margin-top: 10px;
     }
-  </style>
+    th {
+        background-color: #161b22;
+        color: #58a6ff;
+        padding: 10px 8px;
+        text-align: left;
+        font-size: 9.5pt;
+        border-bottom: 2px solid #30363d;
+        text-transform: uppercase;
+    }
+    td {
+        padding: 8px 8px;
+        border-bottom: 1px solid #21262d;
+        font-size: 9pt;
+    }
+    tr:nth-child(even) {
+        background-color: #161b22;
+    }
+    .level-name {
+        font-weight: bold;
+        color: #f0f6fc;
+    }
+    .creator {
+        color: #79c0ff;
+    }
+    .level-id {
+        font-family: 'Courier New', Courier, monospace;
+        color: #e3b341;
+        font-weight: bold;
+    }
+    .difficulty {
+        font-weight: bold;
+    }
+    .easy-demon { color: #3fb950; }
+    .medium-demon { color: #d29922; }
+    .hard-demon { color: #f85149; }
+    .insane-demon { color: #a371f7; }
+    .extreme-demon { color: #f0883e; }
+</style>
 </head>
 <body>
 
-  <!-- NAVBAR -->
-  <header>
-    <div class="logo">
-      <i class="fa-solid fa-cube"></i> SVR PAPUS <span>DEMON LIST</span>
-    </div>
-    <nav>
-      <a href="#" class="active"><i class="fa-solid fa-house"></i> Home</a>
-      <a href="#"><i class="fa-solid fa-list-ol"></i> Lista Principal</a>
-      <a href="#"><i class="fa-solid fa-clock-rotate-left"></i> Legacy</a>
-      <a href="#"><i class="fa-solid fa-globe"></i> Países</a>
-    </nav>
-  </header>
+<h1>Lista de Niveles de Geometry Dash</h1>
+<div class="subtitle">Creadores Reales e IDs de los Niveles</div>
 
-  <!-- CONTENT CONTAINER -->
-  <div class="container">
-    
-    <!-- MAIN COLUMN -->
-    <main>
-      
-      <!-- TOP #1 FEATURED -->
-      <div class="featured-card">
-        <div class="featured-badge">#1</div>
-        <img class="featured-img" src="https://via.placeholder.com/600x350/12141d/8a2be2?text=FOREST+TEMPLE" alt="Forest Temple">
-        <div class="featured-info">
-          <h1 class="featured-title">FOREST TEMPLE</h1>
-          <div class="tags">
-            <span class="tag">Hard Demon</span>
-            <span class="tag">Rated</span>
-          </div>
-          <div class="info-list">
-            <div class="info-item">
-              <i class="fa-solid fa-user"></i>
-              <span><strong>Creador:</strong> Michigun <img src="https://flagcdn.com/w20/co.png" class="flag" alt="Colombia"></span>
-            </div>
-            <div class="info-item">
-              <i class="fa-solid fa-circle-check"></i>
-              <span><strong>Verificado por:</strong> Fernd1212 <i class="fa-solid fa-shield-halved" style="color: var(--accent-glow);"></i></span>
-            </div>
-            <div class="info-item">
-              <i class="fa-solid fa-key"></i>
-              <span><strong>ID:</strong> 11402965</span>
-            </div>
-            <div class="info-item">
-              <i class="fa-solid fa-shapes"></i>
-              <span><strong>Objetos:</strong> 185,432</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- MAIN TABLE -->
-      <div class="table-container">
-        <div class="section-title">
-          <i class="fa-solid fa-trophy" style="color: gold;"></i> LISTA PRINCIPAL
-        </div>
-        
-        <table class="demon-table">
-          <thead>
-            <tr>
-              <th>POS</th>
-              <th>NIVEL</th>
-              <th>CREADOR</th>
-              <th>VERIFICADO POR</th>
-              <th>DURACIÓN</th>
-              <th>OBJETOS</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-
-            <!-- TOP 1 -->
-            <tr>
-              <td class="rank">1</td>
-              <td>
-                <div class="level-cell">
-                  <img class="level-thumb" src="https://via.placeholder.com/150/12141d/8a2be2?text=FOREST+TEMPLE" alt="thumb">
-                  <div>
-                    <div class="level-name">FOREST TEMPLE</div>
-                    <span class="tag" style="font-size: 0.65rem;">Hard Demon</span>
-                  </div>
-                </div>
-              </td>
-              <td><div class="creator-info"><img src="https://flagcdn.com/w20/co.png" class="flag" alt="CO"> Michigun</div></td>
-              <td>Fernd1212 <i class="fa-solid fa-check" style="color: var(--accent-glow);"></i></td>
-              <td>1:52</td>
-              <td>185,432</td>
-              <td><a href="#" class="play-btn"><i class="fa-solid fa-circle-play"></i></a></td>
-            </tr>
-
-            <!-- TOP 2 -->
-            <tr>
-              <td class="rank">2</td>
-              <td>
-                <div class="level-cell">
-                  <img class="level-thumb" src="https://via.placeholder.com/150/12141d/8a2be2?text=NINE+CIRCLES" alt="thumb">
-                  <div>
-                    <div class="level-name">NINE CIRCLES</div>
-                    <span class="tag" style="font-size: 0.65rem;">Hard Demon</span>
-                  </div>
-                </div>
-              </td>
-              <td><div class="creator-info"><img src="https://flagcdn.com/w20/us.png" class="flag" alt="US"> Zobros</div></td>
-              <td>Zobros <i class="fa-solid fa-check" style="color: var(--accent-glow);"></i></td>
-              <td>1:30</td>
-              <td>12,500</td>
-              <td><a href="#" class="play-btn"><i class="fa-solid fa-circle-play"></i></a></td>
-            </tr>
-
-            <!-- TOP 3 -->
-            <tr>
-              <td class="rank">3</td>
-              <td>
-                <div class="level-cell">
-                  <img class="level-thumb" src="https://via.placeholder.com/150/12141d/8a2be2?text=CRAZY" alt="thumb">
-                  <div>
-                    <div class="level-name">CRAZY</div>
-                    <span class="tag" style="font-size: 0.65rem;">Hard Demon</span>
-                  </div>
-                </div>
-              </td>
-              <td><div class="creator-info"><img src="https://flagcdn.com/w20/se.png" class="flag" alt="SE"> DavJT</div></td>
-              <td>DavJT <i class="fa-solid fa-check" style="color: var(--accent-glow);"></i></td>
-              <td>1:40</td>
-              <td>45,000</td>
-              <td><a href="#" class="play-btn"><i class="fa-solid fa-circle-play"></i></a></td>
-            </tr>
-
-            <!-- TOP 4 -->
-            <tr>
-              <td class="rank">4</td>
-              <td>
-                <div class="level-cell">
-                  <img class="level-thumb" src="https://via.placeholder.com/150/12141d/8a2be2?text=TROLL+MADNESS" alt="thumb">
-                  <div>
-                    <div class="level-name">TROLL MADNESS</div>
-                    <span class="tag" style="font-size: 0.65rem;">Medium Demon</span>
-                  </div>
-                </div>
-              </td>
-              <td><div class="creator-info"><img src="https://flagcdn.com/w20/es.png" class="flag" alt="ES"> CoderGD</div></td>
-              <td>CoderGD <i class="fa-solid fa-check" style="color: var(--accent-glow);"></i></td>
-              <td>1:20</td>
-              <td>28,900</td>
-              <td><a href="#" class="play-btn"><i class="fa-solid fa-circle-play"></i></a></td>
-            </tr>
-
-            <!-- TOP 5 -->
-            <tr>
-              <td class="rank">5</td>
-              <td>
-                <div class="level-cell">
-                  <img class="level-thumb" src="https://via.placeholder.com/150/12141d/8a2be2?text=DENOUMENT" alt="thumb">
-                  <div>
-                    <div class="level-name">DENOUMENT</div>
-                    <span class="tag" style="font-size: 0.65rem;">Extreme Demon</span>
-                  </div>
-                </div>
-              </td>
-              <td><div class="creator-info"><img src="https://flagcdn.com/w20/mx.png" class="flag" alt="MX"> Syntho</div></td>
-              <td>Syntho <i class="fa-solid fa-check" style="color: var(--accent-glow);"></i></td>
-              <td>2:10</td>
-              <td>150,000</td>
-              <td><a href="#" class="play-btn"><i class="fa-solid fa-circle-play"></i></a></td>
-            </tr>
-
-            <!-- TOP 6 -->
-            <tr>
-              <td class="rank">6</td>
-              <td>
-                <div class="level-cell">
-                  <img class="level-thumb" src="https://via.placeholder.com/150/12141d/8a2be2?text=ASTREANS" alt="thumb">
-                  <div>
-                    <div class="level-name">ASTREANS</div>
-                    <span class="tag" style="font-size: 0.65rem;">Hard Demon</span>
-                  </div>
-                </div>
-              </td>
-              <td><div class="creator-info"><img src="https://flagcdn.com/w20/cl.png" class="flag" alt="CL"> Xenon</div></td>
-              <td>Xenon <i class="fa-solid fa-check" style="color: var(--accent-glow);"></i></td>
-              <td>1:45</td>
-              <td>60,200</td>
-              <td><a href="#" class="play-btn"><i class="fa-solid fa-circle-play"></i></a></td>
-            </tr>
-
-            <!-- TOP 7 -->
-            <tr>
-              <td class="rank">7</td>
-              <td>
-                <div class="level-cell">
-                  <img class="level-thumb" src="https://via.placeholder.com/150/12141d/8a2be2?text=NANTENDO" alt="thumb">
-                  <div>
-                    <div class="level-name">NANTENDO</div>
-                    <span class="tag" style="font-size: 0.65rem;">Medium Demon</span>
-                  </div>
-                </div>
-              </td>
-              <td><div class="creator-info"><img src="https://flagcdn.com/w20/jp.png" class="flag" alt="JP"> ImGamer</div></td>
-              <td>ImGamer <i class="fa-solid fa-check" style="color: var(--accent-glow);"></i></td>
-              <td>3:12</td>
-              <td>98,000</td>
-              <td><a href="#" class="play-btn"><i class="fa-solid fa-circle-play"></i></a></td>
-            </tr>
-
-            <!-- TOP 8 -->
-            <tr>
-              <td class="rank">8</td>
-              <td>
-                <div class="level-cell">
-                  <img class="level-thumb" src="https://via.placeholder.com/150/12141d/8a2be2?text=SAKUPEN+EGG" alt="thumb">
-                  <div>
-                    <div class="level-name">SAKUPEN EGG</div>
-                    <span class="tag" style="font-size: 0.65rem;">Medium Demon</span>
-                  </div>
-                </div>
-              </td>
-              <td><div class="creator-info"><img src="https://flagcdn.com/w20/us.png" class="flag" alt="US"> Siv25</div></td>
-              <td>Siv25 <i class="fa-solid fa-check" style="color: var(--accent-glow);"></i></td>
-              <td>1:10</td>
-              <td>35,400</td>
-              <td><a href="#" class="play-btn"><i class="fa-solid fa-circle-play"></i></a></td>
-            </tr>
-
-            <!-- TOP 9 -->
-            <tr>
-              <td class="rank">9</td>
-              <td>
-                <div class="level-cell">
-                  <img class="level-thumb" src="https://via.placeholder.com/150/12141d/8a2be2?text=ULTRA+PARACOSM" alt="thumb">
-                  <div>
-                    <div class="level-name">ULTRA PARACOSM</div>
-                    <span class="tag" style="font-size: 0.65rem;">Easy Demon</span>
-                  </div>
-                </div>
-              </td>
-              <td><div class="creator-info"><img src="https://flagcdn.com/w20/ca.png" class="flag" alt="CA"> R3XIX</div></td>
-              <td>R3XIX <i class="fa-solid fa-check" style="color: var(--accent-glow);"></i></td>
-              <td>1:15</td>
-              <td>18,000</td>
-              <td><a href="#" class="play-btn"><i class="fa-solid fa-circle-play"></i></a></td>
-            </tr>
-
-            <!-- TOP 10 -->
-            <tr>
-              <td class="rank">10</td>
-              <td>
-                <div class="level-cell">
-                  <img class="level-thumb" src="https://via.placeholder.com/150/12141d/8a2be2?text=RIDE" alt="thumb">
-                  <div>
-                    <div class="level-name">RIDE</div>
-                    <span class="tag" style="font-size: 0.65rem;">Medium Demon</span>
-                  </div>
-                </div>
-              </td>
-              <td><div class="creator-info"><img src="https://flagcdn.com/w20/ar.png" class="flag" alt="AR"> DynaMix</div></td>
-              <td>DynaMix <i class="fa-solid fa-check" style="color: var(--accent-glow);"></i></td>
-              <td>1:35</td>
-              <td>42,100</td>
-              <td><a href="#" class="play-btn"><i class="fa-solid fa-circle-play"></i></a></td>
-            </tr>
-
-            <!-- TOP 11 -->
-            <tr>
-              <td class="rank">11</td>
-              <td>
-                <div class="level-cell">
-                  <img class="level-thumb" src="https://via.placeholder.com/150/12141d/8a2be2?text=SOLAR+CIRCLES" alt="thumb">
-                  <div>
-                    <div class="level-name">SOLAR CIRCLES</div>
-                    <span class="tag" style="font-size: 0.65rem;">Easy Demon</span>
-                  </div>
-                </div>
-              </td>
-              <td><div class="creator-info"><img src="https://flagcdn.com/w20/de.png" class="flag" alt="DE"> DVIK</div></td>
-              <td>DVIK <i class="fa-solid fa-check" style="color: var(--accent-glow);"></i></td>
-              <td>1:22</td>
-              <td>22,000</td>
-              <td><a href="#" class="play-btn"><i class="fa-solid fa-circle-play"></i></a></td>
-            </tr>
-
-            <!-- TOP 12 -->
-            <tr>
-              <td class="rank">12</td>
-              <td>
-                <div class="level-cell">
-                  <img class="level-thumb" src="https://via.placeholder.com/150/12141d/8a2be2?text=LOVESHOT" alt="thumb">
-                  <div>
-                    <div class="level-name">LOVESHOT</div>
-                    <span class="tag" style="font-size: 0.65rem;">Medium Demon</span>
-                  </div>
-                </div>
-              </td>
-              <td><div class="creator-info"><img src="https://flagcdn.com/w20/br.png" class="flag" alt="BR"> V90</div></td>
-              <td>V90 <i class="fa-solid fa-check" style="color: var(--accent-glow);"></i></td>
-              <td>1:28</td>
-              <td>31,500</td>
-              <td><a href="#" class="play-btn"><i class="fa-solid fa-circle-play"></i></a></td>
-            </tr>
-
-            <!-- TOP 13 -->
-            <tr>
-              <td class="rank">13</td>
-              <td>
-                <div class="level-cell">
-                  <img class="level-thumb" src="https://via.placeholder.com/150/12141d/8a2be2?text=QUARTZ+WINDS" alt="thumb">
-                  <div>
-                    <div class="level-name">QUARTZ WINDS</div>
-                    <span class="tag" style="font-size: 0.65rem;">Medium Demon</span>
-                  </div>
-                </div>
-              </td>
-              <td><div class="creator-info"><img src="https://flagcdn.com/w20/fr.png" class="flag" alt="FR"> KrmaL</div></td>
-              <td>KrmaL <i class="fa-solid fa-check" style="color: var(--accent-glow);"></i></td>
-              <td>1:50</td>
-              <td>54,000</td>
-              <td><a href="#" class="play-btn"><i class="fa-solid fa-circle-play"></i></a></td>
-            </tr>
-
-            <!-- TOP 14 -->
-            <tr>
-              <td class="rank">14</td>
-              <td>
-                <div class="level-cell">
-                  <img class="level-thumb" src="https://via.placeholder.com/150/12141d/8a2be2?text=B" alt="thumb">
-                  <div>
-                    <div class="level-name">B</div>
-                    <span class="tag" style="font-size: 0.65rem;">Medium Demon</span>
-                  </div>
-                </div>
-              </td>
-              <td><div class="creator-info"><img src="https://flagcdn.com/w20/us.png" class="flag" alt="US"> Motleyorc</div></td>
-              <td>Motleyorc <i class="fa-solid fa-check" style="color: var(--accent-glow);"></i></td>
-              <td>1:24</td>
-              <td>48,900</td>
-              <td><a href="#" class="play-btn"><i class="fa-solid fa-circle-play"></i></a></td>
-            </tr>
-
-            <!-- TOP 15 -->
-            <tr>
-              <td class="rank">15</td>
-              <td>
-                <div class="level-cell">
-                  <img class="level-thumb" src="https://via.placeholder.com/150/12141d/8a2be2?text=666" alt="thumb">
-                  <div>
-                    <div class="level-name">666</div>
-                    <span class="tag" style="font-size: 0.65rem;">Insane Demon</span>
-                  </div>
-                </div>
-              </td>
-              <td><div class="creator-info"><img src="https://flagcdn.com/w20/ru.png" class="flag" alt="RU"> MDK</div></td>
-              <td>MDK <i class="fa-solid fa-check" style="color: var(--accent-glow);"></i></td>
-              <td>2:05</td>
-              <td>88,000</td>
-              <td><a href="#" class="play-btn"><i class="fa-solid fa-circle-play"></i></a></td>
-            </tr>
-
-            <!-- TOP 16 -->
-            <tr>
-              <td class="rank">16</td>
-              <td>
-                <div class="level-cell">
-                  <img class="level-thumb" src="https://via.placeholder.com/150/12141d/8a2be2?text=RETRO+CIRCLES" alt="thumb">
-                  <div>
-                    <div class="level-name">RETRO CIRCLES</div>
-                    <span class="tag" style="font-size: 0.65rem;">Easy Demon</span>
-                  </div>
-                </div>
-              </td>
-              <td><div class="creator-info"><img src="https://flagcdn.com/w20/uk.png" class="flag" alt="UK"> Nacho21</div></td>
-              <td>Nacho21 <i class="fa-solid fa-check" style="color: var(--accent-glow);"></i></td>
-              <td>1:12</td>
-              <td>16,500</td>
-              <td><a href="#" class="play-btn"><i class="fa-solid fa-circle-play"></i></a></td>
-            </tr>
-
-            <!-- TOP 17 -->
-            <tr>
-              <td class="rank">17</td>
-              <td>
-                <div class="level-cell">
-                  <img class="level-thumb" src="https://via.placeholder.com/150/12141d/8a2be2?text=CYBER+DRIFT" alt="thumb">
-                  <div>
-                    <div class="level-name">CYBER DRIFT</div>
-                    <span class="tag" style="font-size: 0.65rem;">Easy Demon</span>
-                  </div>
-                </div>
-              </td>
-              <td><div class="creator-info"><img src="https://flagcdn.com/w20/kr.png" class="flag" alt="KR"> Viper</div></td>
-              <td>Viper <i class="fa-solid fa-check" style="color: var(--accent-glow);"></i></td>
-              <td>1:18</td>
-              <td>27,300</td>
-              <td><a href="#" class="play-btn"><i class="fa-solid fa-circle-play"></i></a></td>
-            </tr>
-
-            <!-- TOP 18 -->
-            <tr>
-              <td class="rank">18</td>
-              <td>
-                <div class="level-cell">
-                  <img class="level-thumb" src="https://via.placeholder.com/150/12141d/8a2be2?text=SPIDER+DANCE" alt="thumb">
-                  <div>
-                    <div class="level-name">SPIDER DANCE</div>
-                    <span class="tag" style="font-size: 0.65rem;">Easy Demon</span>
-                  </div>
-                </div>
-              </td>
-              <td><div class="creator-info"><img src="https://flagcdn.com/w20/co.png" class="flag" alt="CO"> TobyGD</div></td>
-              <td>TobyGD <i class="fa-solid fa-check" style="color: var(--accent-glow);"></i></td>
-              <td>1:30</td>
-              <td>33,100</td>
-              <td><a href="#" class="play-btn"><i class="fa-solid fa-circle-play"></i></a></td>
-            </tr>
-
-          </tbody>
-        </table>
-      </div>
-
-    </main>
-
-    <!-- SIDEBAR -->
-    <aside class="sidebar">
-      
-      <div class="sidebar-card">
-        <div class="section-title"><i class="fa-brands fa-discord"></i> DISCORD SERVER</div>
-        <p style="font-size: 0.95rem; color: var(--text-muted);">Únete a nuestra comunidad y envía tus niveles para la lista.</p>
-        <a href="#" class="discord-btn"><i class="fa-brands fa-discord"></i> UNIRSE AL SERVIDOR</a>
-      </div>
-
-      <div class="sidebar-card">
-        <div class="section-title"><i class="fa-solid fa-paper-plane"></i> ¿CÓMO ENVIAR?</div>
-        <div class="steps-list">
-          <div class="step-item"><span class="step-num">1</span> Únete al servidor de Discord</div>
-          <div class="step-item"><span class="step-num">2</span> Ve al canal #submit-level</div>
-          <div class="step-item"><span class="step-num">3</span> Sigue el formato de envío</div>
-          <div class="step-item"><span class="step-num">4</span> Espera la revisión del staff</div>
-        </div>
-      </div>
-
-    </aside>
-
-  </div>
-
-  <!-- FOOTER -->
-  <footer>
-    &copy; 2026 SVR PAPUS DEMON LIST. Todos los derechos reservados.
-  </footer>
+<table>
+    <thead>
+        <tr>
+            <th style="width: 5%;">#</th>
+            <th style="width: 25%;">Nivel</th>
+            <th style="width: 35%;">Creador(es)</th>
+            <th style="width: 20%;">ID</th>
+            <th style="width: 15%;">Dificultad</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td class="level-name">Forest Temple</td>
+            <td class="creator">Michigun</td>
+            <td class="level-id">11402965</td>
+            <td class="difficulty hard-demon">Hard Demon</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td class="level-name">Nine Circles</td>
+            <td class="creator">Zobros</td>
+            <td class="level-id">4284013</td>
+            <td class="difficulty hard-demon">Hard Demon</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td class="level-name">Crazy</td>
+            <td class="creator">DavJT</td>
+            <td class="level-id">37862215</td>
+            <td class="difficulty hard-demon">Hard Demon</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td class="level-name">Troll Madness</td>
+            <td class="creator">Mt1234</td>
+            <td class="level-id">1222384</td>
+            <td class="difficulty insane-demon">Insane Demon</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td class="level-name">Denouement</td>
+            <td class="creator">Viprin & More</td>
+            <td class="level-id">26322046</td>
+            <td class="difficulty extreme-demon">Extreme Demon</td>
+        </tr>
+        <tr>
+            <td>6</td>
+            <td class="level-name">Astreans</td>
+            <td class="creator">Viprin & More</td>
+            <td class="level-id">47124237</td>
+            <td class="difficulty medium-demon">Medium Demon</td>
+        </tr>
+        <tr>
+            <td>7</td>
+            <td class="level-name">Nantendo</td>
+            <td class="creator">im fernando & More</td>
+            <td class="level-id">58270823</td>
+            <td class="difficulty medium-demon">Medium Demon</td>
+        </tr>
+        <tr>
+            <td>8</td>
+            <td class="level-name">Sakupen Egg</td>
+            <td class="creator">Siv25</td>
+            <td class="level-id">63870603</td>
+            <td class="difficulty medium-demon">Medium Demon</td>
+        </tr>
+        <tr>
+            <td>9</td>
+            <td class="level-name">Ultra Paracosm</td>
+            <td class="creator">iIiRulasiIi</td>
+            <td class="level-id">11588490</td>
+            <td class="difficulty easy-demon">Easy Demon</td>
+        </tr>
+        <tr>
+            <td>10</td>
+            <td class="level-name">Ride</td>
+            <td class="creator">Minesap</td>
+            <td class="level-id">41604118</td>
+            <td class="difficulty easy-demon">Easy Demon</td>
+        </tr>
+        <tr>
+            <td>11</td>
+            <td class="level-name">Solar Circles</td>
+            <td class="creator">Droning GD</td>
+            <td class="level-id">11538392</td>
+            <td class="difficulty easy-demon">Easy Demon</td>
+        </tr>
+        <tr>
+            <td>12</td>
+            <td class="level-name">Loveshot</td>
+            <td class="creator">Viprin & More</td>
+            <td class="level-id">62590241</td>
+            <td class="difficulty easy-demon">Easy Demon</td>
+        </tr>
+        <tr>
+            <td>13</td>
+            <td class="level-name">Quartz Winds</td>
+            <td class="creator">Giron</td>
+            <td class="level-id">18442220</td>
+            <td class="difficulty easy-demon">Easy Demon</td>
+        </tr>
+        <tr>
+            <td>14</td>
+            <td class="level-name">B</td>
+            <td class="creator">Motleyorc & ScorchFX</td>
+            <td class="level-id">34174820</td>
+            <td class="difficulty medium-demon">Medium Demon</td>
+        </tr>
+        <tr>
+            <td>15</td>
+            <td class="level-name">666</td>
+            <td class="creator">Zhenmuron</td>
+            <td class="level-id">666</td>
+            <td class="difficulty easy-demon">Easy Demon</td>
+        </tr>
+        <tr>
+            <td>16</td>
+            <td class="level-name">Retro Circles</td>
+            <td class="creator">Nacho21</td>
+            <td class="level-id">18580661</td>
+            <td class="difficulty easy-demon">Easy Demon</td>
+        </tr>
+        <tr>
+            <td>17</td>
+            <td class="level-name">Cyber Drift</td>
+            <td class="creator">Szymi</td>
+            <td class="level-id">53860471</td>
+            <td class="difficulty easy-demon">Easy Demon</td>
+        </tr>
+        <tr>
+            <td>18</td>
+            <td class="level-name">Spider Dance</td>
+            <td class="creator">Tewi</td>
+            <td class="level-id">26176378</td>
+            <td class="difficulty easy-demon">Easy Demon</td>
+        </tr>
+    </tbody>
+</table>
 
 </body>
 </html>
